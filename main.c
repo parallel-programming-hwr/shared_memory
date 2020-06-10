@@ -58,7 +58,7 @@ int main(){
 		if (sem_wait(&sstr->sem) == -1)
 			errExit("sem_wait");
 		pread(fd,sstr, sizeof(struct shared_str),0);	
-		printf("text in shared buffe: %s\n",sstr -> buf);
+		printf("text in shared buffer: %s\n",sstr -> buf);
 	}
 	int status;
 	pid = wait(&status);
