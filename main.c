@@ -47,7 +47,7 @@ int main(){
 		printf("child is running...\n");
 		for (int i =0 ; i <NUM_CALLS ; i++) {
 			sleep(1);
-			sstr -> len = snprintf((char*)&sstr->buf,256,"hallo %d",i);
+			sstr -> len = snprintf((char*)&sstr->buf,256,"hallo no. %d",i);
 			if (sem_post(&sstr->sem) == -1)
 				errExit("sem_post");
 		}
@@ -58,7 +58,7 @@ int main(){
 		if (sem_wait(&sstr->sem) == -1)
 			errExit("sem_wait");
 		pread(fd,sstr, sizeof(struct shared_str),0);	
-		printf("child: %s\n",sstr -> buf);
+		printf("text in shared buffe: %s\n",sstr -> buf);
 	}
 	int status;
 	pid = wait(&status);
